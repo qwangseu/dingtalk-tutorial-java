@@ -2,6 +2,7 @@ package org.example.ai.actions;
 
 import com.dingtalk.open.app.api.OpenDingTalkClient;
 import com.dingtalk.open.app.api.OpenDingTalkStreamClientBuilder;
+import com.dingtalk.open.app.api.callback.DingTalkStreamTopics;
 import com.dingtalk.open.app.api.security.AuthClientCredential;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -24,7 +25,7 @@ public class StreamClientConfigure {
     public OpenDingTalkClient configure(StreamActionsDispatcher dispatcher) {
         return OpenDingTalkStreamClientBuilder.custom()
                 .credential(new AuthClientCredential(clientId, clientSecret))
-                .registerCallbackListener("/v1.0/graph/api/invoke", dispatcher)
+                .registerCallbackListener(DingTalkStreamTopics.GRAPH_API_TOPIC, dispatcher)
                 .build();
     }
 
