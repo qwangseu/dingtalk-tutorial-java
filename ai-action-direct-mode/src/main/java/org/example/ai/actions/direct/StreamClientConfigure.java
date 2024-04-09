@@ -23,6 +23,7 @@ public class StreamClientConfigure {
     @Bean(initMethod = "start")
     public OpenDingTalkClient configure() {
         return OpenDingTalkStreamClientBuilder.custom()
+                .preEnv()
                 .credential(new AuthClientCredential(clientId, clientSecret))
                 .forwardGraphRequestToHTTP(8080)
                 .build();

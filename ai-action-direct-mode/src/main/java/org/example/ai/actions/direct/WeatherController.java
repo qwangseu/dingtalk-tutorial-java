@@ -1,6 +1,5 @@
 package org.example.ai.actions.direct;
 
-import jdk.internal.joptsimple.internal.Strings;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
@@ -18,7 +17,7 @@ public class WeatherController {
     @GetMapping("/get")
     @ResponseBody
     public Map<String, Object> get(@RequestParam(value = "input", required = false) String input,
-                                   @RequestParam(value = "inputAttribute", required = false) String attribute,
+                                   @RequestParam(value = "inputAttribute", required = false) String inputAttribute,
                                    @RequestParam(value = "sender", required = false) String sender) {
         Map<String, Object> result = new HashMap<>();
         String location = "杭州";
