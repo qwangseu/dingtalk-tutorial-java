@@ -20,12 +20,14 @@ public class StreamClientConfigure {
     @Value("${dingtalk.app.client-secret}")
     private String clientSecret;
 
+    @Value("${server.port}")
+    private int port;
+
     @Bean(initMethod = "start")
     public OpenDingTalkClient configure() {
         return OpenDingTalkStreamClientBuilder.custom()
-                .preEnv()
                 .credential(new AuthClientCredential(clientId, clientSecret))
-                .forwardGraphRequestToHTTP(8080)
+                .forwardGraphRequestToHTTP(port)
                 .build();
     }
 }

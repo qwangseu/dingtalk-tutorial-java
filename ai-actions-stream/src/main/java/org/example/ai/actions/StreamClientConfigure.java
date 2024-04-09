@@ -21,11 +21,16 @@ public class StreamClientConfigure {
     @Value("${dingtalk.app.client-secret}")
     private String clientSecret;
 
+    @Value("${server.port}")
+    private int port;
+
     @Bean(initMethod = "start")
     public OpenDingTalkClient configure(StreamActionsDispatcher dispatcher) {
         return OpenDingTalkStreamClientBuilder.custom()
                 .credential(new AuthClientCredential(clientId, clientSecret))
-                .registerCallbackListener(DingTalkStreamTopics.GRAPH_API_TOPIC, dispatcher)
+//                .registerCallbackListener(DingTalkStreamTopics.GRAPH_API_TOPIC, dispatcher)
+                //推荐使用转发成HTTP的方式
+                .forwardGraphRequestToHTTP(port)
                 .build();
     }
 

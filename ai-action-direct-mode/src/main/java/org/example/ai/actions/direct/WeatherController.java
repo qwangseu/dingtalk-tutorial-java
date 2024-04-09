@@ -18,7 +18,8 @@ public class WeatherController {
     @ResponseBody
     public Map<String, Object> get(@RequestParam(value = "input", required = false) String input,
                                    @RequestParam(value = "inputAttribute", required = false) String inputAttribute,
-                                   @RequestParam(value = "sender", required = false) String sender) {
+                                   @RequestParam(value = "sender", required = false) String sender,
+                                   @RequestParam(value = "corpId", required = false) String corpId) {
         Map<String, Object> result = new HashMap<>();
         String location = "杭州";
         String dateStr = (new SimpleDateFormat("yyyy-MM-dd")).format(new Date());

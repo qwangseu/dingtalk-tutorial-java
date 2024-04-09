@@ -38,6 +38,15 @@ paths:
             x-dingtalk-context:
               property: currentInput
               format: attribute
+        - name: corpId
+          in: query
+          description: 组织信息
+          required: true
+          schema:
+            type: string
+            x-dingtalk-context:
+              property: currentOrg
+              format: corpId
       responses:
         '200':
           description: OK
